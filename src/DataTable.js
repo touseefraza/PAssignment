@@ -1,10 +1,11 @@
 import * as React from 'react';
 import './style.css';
-
+import { Button, Card, Accordion, Row,Col} from 'react-bootstrap';
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShieldAlt,faPenSquare,faToggle } from '@fortawesome/free-solid-svg-icons'
 import Modal from './CreateForm';
+import { right } from '@popperjs/core';
 export default class Table extends React.Component {
   constructor(props){
     console.log(props,"props");
@@ -12,7 +13,8 @@ export default class Table extends React.Component {
   this.state = {
     modal: false,
     name: "",
-    modalInputName: ""
+	modalInputName: "",
+	postId:[]
     };
   this.getHeader = this.getHeader.bind(this);
   this.getRowsData = this.getRowsData.bind(this);
@@ -64,58 +66,32 @@ handleSubmit(e) {
   }
   render() {
   return (
-  <div id="cointainer" style={{marginTop:65}}>
-    <div>
-    <br/>
-      <h4 id="align">Manage Users</h4>
-      <hr/>
-    </div>
-    <div>
-    <div  className="text-center">
-      <button className ="btn btn-lg btn btn-success form-control"href="javascript:;" onClick={e => this.modalOpen(e)} ><i class="fa fa-plus-circle" aria-hidden="true"></i>
-            Open Modal
-      </button>
-    </div>
-    <br/>
-      <Modal show={this.state.modal} handleClose={e => this.modalClose(e)}  >
-        <div class="modal-header">
-          <h4 class="modal-title">Add New User</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-          <div class="modal-body">
-            <div className="form-group">
-          <label for="usr">Name</label>
-          <input type="text" placeholder="Enter Name here" class="form-control" id="usr" name="modalInputName" value={this.state.modalInputName} onChange={e => this.handleChange(e)} />
-
-          <label for="usr">Email</label>
-          <input type="text" placeholder="Enter email here" class="form-control" id="usr" name="modalInputName" value={this.state.modalInputName} onChange={e => this.handleChange(e)} />
-
-          <label for="usr">Phone Number</label>
-          <input type="text" placeholder="Enter phone number here" class="form-control" id="usr" name="modalInputName" value={this.state.modalInputName} onChange={e => this.handleChange(e)} />
-
-          <label for="usr">Role</label>
-          <input type="text" placeholder="Please select role" class="form-control" id="usr" name="modalInputName" value={this.state.modalInputName} onChange={e => this.handleChange(e)} />
-            </div>
-          </div>
-          <div className="form-group">
-            <button type="submit" class="btn btn-success form-control">Submit</button>
-          </div>
-        </Modal>
-     </div>
-
-    <div>
-      <table className="table">
-      <thead>
+<div id="cointainer" >
+ <Accordion defaultActiveKey="0" >
+  <Card>
+    <Card.Header style={{backgroundColor:'#062b45',height:40}}>
+	<Row>
+    <Col><p class="whiiteHeading">date:10:08:2020 at 5:20pm</p></Col>
+    <Col ><p class="whiiteHeading">Total Km:65km</p></Col>
+	<Accordion.Toggle as={Button} variant="link" eventKey="0">
+        <p class="whiiteHeading"style={{fontSize:20,fontWeight:'bold',marginTop:-10}}>-</p>
+      </Accordion.Toggle>
+  </Row>
+    </Card.Header>
+    <Accordion.Collapse eventKey="0">
+      <Card.Body>     
+	 <table  class="table table-bordered table-sm table-responsive" >
+      <thead class="thead-dark">
         <tr>{this.getHeader()}</tr>
       </thead>
       <tbody>
         {this.getRowsData()}
       </tbody>
-   </table>
-
-   </div>
+   </table></Card.Body>
+    </Accordion.Collapse>
+  </Card>
+</Accordion>
   </div>
-
   );
   }
  }
@@ -124,13 +100,7 @@ handleSubmit(e) {
   return props.keys.map((key, index)=>{
     let column;
     if(key === "Action"){
-      column = <td><FontAwesomeIcon icon={faPenSquare} className="fa-2x fa-custom"/><FontAwesomeIcon icon={faShieldAlt} className="fa-2x fa-custom" /></td>;
-    }else if (key === "Status") {
-      if(props.data[key]){
-        column = <td><input checked className="fa-2x" type="checkbox" data-toggle="toggle" /></td>;
-      }else{
-        column = <td><input className="fa-2x" type="checkbox" data-toggle="toggle" /></td>;
-      }
+      column = <td><div class="row"><div class="col-md-4 col-sm-4 col-12"><button class="btn btn-info btn-sm">MovementReport</button></div><div class="col-md-4 col-sm-4 col-12"><button class="btn btn-info btn-sm">MovementReport</button></div></div></td>;
     }else{
         column = <td>{props.data[key]}</td>;
     }
