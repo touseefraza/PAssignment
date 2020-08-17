@@ -1,5 +1,5 @@
 .body{
-  background-color: #e7e7e7;
+  background-color:#e9ecef;
   height: auto;
 }
 .modal {
@@ -64,12 +64,20 @@
 			height: 12vh;
 			float: right;
 
-			width:80%;
+			width:90%;
 			margin-top: -15vh;
 			margin-left:5%;
 			margin-right:10%;
 			/*  position: fixed; */
-			 }	 
+			 }	
+	.breadCrumbContainer{
+
+			width:90%;
+			margin-top: 15vh;
+			margin-bottom: -20vh;
+			margin-left:5%;
+			margin-right:10%;
+	}		  
    .whiiteHeading{
 	   color: #FFFFFF;
 	   font-size: 14px;
@@ -191,3 +199,11 @@ ul {
 	background-color:#363738;
 
 }
+#btnSearch {
+	display: inline-flex;
+	height: 2.7rem;
+	align-items: center;
+	width: 4rem;
+	-webkit-appearance: none;
+	justify-content: center;
+  }

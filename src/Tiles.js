@@ -3,11 +3,47 @@ import './style.css';
 import { FaTruckMoving,FaTachometerAlt } from 'react-icons/fa';
 import { MdWatchLater } from 'react-icons/md';
 import { GiWallet } from 'react-icons/gi';
+import Breadcrumb from 'react-bootstrap/Breadcrumb'
+import Datepicker from './DatePicker';
+import { Button} from 'react-bootstrap';
+import { AiOutlineSearch,AiOutlineExport } from 'react-icons/ai';
 export default class Tiles extends React.Component{
     render() {
 		console.log("toles:",this.props.data)
         return (
 		<>	
+		<div class="breadCrumbContainer">
+			<h3>Trip Summary</h3>
+			<div style={{display:'flex'}}>
+		<Breadcrumb >
+  <Breadcrumb.Item href="#"active>DashBoard</Breadcrumb.Item>
+  <Breadcrumb.Item href="https://getbootstrap.com/docs/4.0/components/breadcrumb/">
+    Trip Summary
+  </Breadcrumb.Item>
+</Breadcrumb>
+<div style={{display:'flex',marginLeft: 'auto',
+  order: 2}}>
+<span style={{fontSize:12,padding:14}}>From:</span>
+<div style={{flexDirection: 'row-reverse',textAlign: 'right'}}> <Datepicker/>
+	</div>
+	<span style={{fontSize:12,padding:14}}> To :</span>
+<div style={{flexDirection: 'row-reverse',textAlign: 'right',paddingRight:5}}> <Datepicker/>
+	</div>
+	<Button id='btnSearch'variant="info" size="sm" style={{marginTop:2,marginRight:10}}>
+			<AiOutlineSearch style={{padding:0}}/>
+  </Button>	
+  <Button variant="outline-info" size="sm" style={{display: 'inline-flex',
+	height: '2.7rem',
+	alignItems: 'center',
+	width: '5rem',
+	WebkitAppearance: 'none',
+	marginTop:2}}>
+			<AiOutlineExport style={{padding:0}}/>
+			Export
+  </Button>	
+</div>	
+</div>
+	</div>
 		<div className="tilesContainer1" style={{display:'flex'}}>
           <div class="tiles">
             <div className="whiiteHeading" style={{fontWeight:'bold',	background: '#5bc0de'}}>

@@ -81,7 +81,7 @@ handleSubmit(e) {
     <Accordion.Collapse eventKey="0">
       <Card.Body>     
 	 <table  class="table table-bordered table-sm table-responsive" >
-      <thead class="thead-dark">
+      <thead class="" style={{backgroundColor:'#5bc0de'}}>
         <tr>{this.getHeader()}</tr>
       </thead>
       <tbody>
