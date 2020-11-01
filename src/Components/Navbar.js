@@ -1,6 +1,5 @@
 import React from 'react';
 import '../style.css';
-import Logo from '../nykaa_logo.svg';
 import { Button} from 'react-bootstrap';
 import { AiOutlineLogout } from 'react-icons/ai';
 export default class Navbar extends React.Component{
